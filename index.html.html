@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Style Paws</title>
+    <meta name="description" content="Style Paws — handcrafted collars, leashes and ID tags.">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #F4FAFF;
+            --brand: #2F4674;
+            --accent: #FF8A4B;
+            --accent-2: #FFB66B;
+            --muted: #4B5A72;
+            --card: #FFFFFF;
+            --glass: rgba(255,255,255,0.65);
+            --radius: 14px;
+            --max: 1200px;
+            --shadow-lg: 0 18px 50px rgba(47,70,116,0.08);
+            --shadow-sm: 0 8px 20px rgba(47,70,116,0.05);
+            --transition: 320ms cubic-bezier(.2,.9,.3,1);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html, body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: 'League Spartan', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg,#EAF6FF 0,#F8FBFF 60%);
+            color: var(--muted);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.4;
+        }
+
+        .page {
+            max-width: var(--max);
+            margin: 36px auto;
+            padding: 0 20px;
+            position: relative
+        }
+
+        /* header */
+        header {
+            position: sticky;
+            top: 18px;
+            z-index: 80;
+            background: var(--glass);
+            backdrop-filter: blur(6px);
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid rgba(47,70,116,0.06);
+            box-shadow: var(--shadow-lg)
+        }
+
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--brand)
+        }
+
+        .brand-visual {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: inline-grid;
+            place-items: center;
+            background: linear-gradient(135deg,#FFD9B3,#FF8A4B);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition)
+        }
+
+        .brand:hover .brand-visual {
+            transform: translateY(-3px) rotate(-3deg)
+        }
+
+        .brand b {
+            font-size: 1.15rem;
+            color: var(--brand)
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .nav-btn {
+            background: #fff;
+            border: 1px solid rgba(47,70,116,0.06);
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--brand);
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform var(--transition),box-shadow var(--transition)
+        }
+
+            .nav-btn:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-sm)
+            }
+
+        .primary {
+            background: linear-gradient(90deg,var(--accent),var(--accent-2));
+            color: #fff;
+            border: none;
+            box-shadow: 0 10px 30px rgba(255,138,75,0.12)
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            font-weight: 700;
+            color: var(--brand)
+        }
+
+        /* cart icon */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .cart-btn {
+            position: relative;
+            background: transparent;
+            border: 0;
+            padding: 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: var(--brand)
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 999px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: 800;
+            box-shadow: 0 6px 18px rgba(255,138,75,0.18)
+        }
+
+        /* hero */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 22px;
+            align-items: center;
+            margin-top: 18px
+        }
+
+        .hero-card {
+            background: var(--card);
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(47,70,116,0.04);
+            position: relative;
+            overflow: visible
+        }
+
+        .hero h1 {
+            margin: 0;
+            color: var(--brand);
+            font-size: 2.4rem;
+            line-height: 1.02
+        }
+
+        .hero p {
+            margin: 14px 0;
+            color: var(--muted);
+            font-size: 1rem
+        }
+
+        .cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .sub-pill {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255,138,75,0.08);
+            color: var(--accent);
+            font-weight: 700
+        }
+
+        /* animated blob */
+        .hero-blob {
+            position: absolute;
+            right: -40px;
+            top: -46px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,138,75,0.18), rgba(255,184,107,0.06));
+            filter: blur(18px);
+            transform: translateZ(0);
+            pointer-events: none;
+            animation: blob 8s infinite alternate;
+        }
+
+        @keyframes blob {
+            from {
+                transform: translateY(0) scale(1)
+            }
+
+            to {
+                transform: translateY(-12px) scale(1.03)
+            }
+        }
+
+        /* hero visual */
+        .hero-visual {
+            background: linear-gradient(180deg,#FFF,#FAFBFF);
+            border-radius: 14px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(47,70,116,0.04)
+        }
+
+            .hero-visual svg {
+                width: 100%;
+                height: 300px;
+                max-width: 360px;
+                display: block
+            }
+
+        /* grid */
+        h2 {
+            color: var(--brand);
+            margin: 28px 0 6px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+            gap: 20px;
+            align-items: start
+        }
+
+        .card {
+            width: 100%;
+            max-width: 360px;
+            background: var(--card);
+            border-radius: 12px;
+            border: 1px solid rgba(47,70,116,0.05);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition),box-shadow var(--transition)
+        }
+
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 30px 60px rgba(47,70,116,0.12)
+            }
+
+        .thumb {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg,#FFF,#F7FBFF);
+            position: relative;
+            overflow: hidden
+        }
+
+        .card-body {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .title {
+            font-weight: 900;
+            color: var(--brand);
+            margin: 0
+        }
+
+        .meta {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin: 0
+        }
+
+        .features {
+            margin: 8px 0 0;
+            padding-left: 18px;
+            color: var(--muted)
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+            gap: 10px
+        }
+
+        .price {
+            font-weight: 900;
+            color: var(--brand);
+            font-size: 1.03rem
+        }
+
+        .add {
+            background: linear-gradient(90deg,var(--accent),var(--accent-2));
+            border: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 180ms
+        }
+
+            .add:active {
+                transform: translateY(1px)
+            }
+
+        /* 3D tilt helper (will be updated by JS) */
+        .card[data-tilt] {
+            transform-style: preserve-3d;
+            perspective: 900
+        }
+
+        .card-inner {
+            transform-origin: center;
+            transition: transform var(--transition)
+        }
+
+        /* reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px) scale(.99);
+            transition: opacity 520ms ease, transform 520ms ease
+        }
+
+            .reveal.visible {
+                opacity: 1;
+                transform: none
+            }
+
+        /* modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(8,14,30,0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 240ms
+        }
+
+            .modal.open {
+                opacity: 1;
+                pointer-events: auto
+            }
+
+        .modal-card {
+            width: 100%;
+            max-width: 720px;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 18px;
+            border: 1px solid rgba(47,70,116,0.06);
+            box-shadow: 0 30px 80px rgba(16,34,81,0.18)
+        }
+
+        .modal-close {
+            float: right;
+            background: transparent;
+            border: 0;
+            font-weight: 800;
+            color: var(--muted);
+            cursor: pointer
+        }
+
+        /* cart panel */
+        .cart-panel {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            width: 340px;
+            max-height: 70vh;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 12px;
+            border: 1px solid rgba(47,70,116,0.06);
+            box-shadow: 0 30px 70px rgba(16,34,81,0.18);
+            z-index: 140;
+            transform: translateY(12px);
+            transition: transform 240ms,opacity 240ms;
+            opacity: 0;
+            pointer-events: none
+        }
+
+            .cart-panel.open {
+                opacity: 1;
+                pointer-events: auto;
+                transform: none
+            }
+
+            .cart-panel h4 {
+                margin: 0 0 8px;
+                color: var(--brand)
+            }
+
+        .cart-items {
+            max-height: 36vh;
+            overflow: auto;
+            margin-top: 8px
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(47,70,116,0.03)
+        }
+
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px
+        }
+
+        .cart-total {
+            font-weight: 900;
+            color: var(--brand);
+            font-size: 1.05rem
+        }
+
+        .cart-close {
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            cursor: pointer
+        }
+
+        /* footer */
+        footer {
+            margin-top: 28px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.95rem;
+            padding: 18px 0
+        }
+
+        @media (max-width:980px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            nav {
+                display: none
+            }
+
+            .mobile-toggle {
+                display: block
+            }
+
+            .cart-panel {
+                right: 12px;
+                left: 12px;
+                width: auto
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            * {
+                transition: none !important;
+                animation: none !important
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="top">
+                <a class="brand" href="#top" aria-label="Style Paws home">
+                    <span class="brand-visual" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" width="36" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <g fill="#2F4674"><ellipse cx="18" cy="20" rx="6" ry="8" /><ellipse cx="30" cy="12" rx="6" ry="8" /><ellipse cx="42" cy="20" rx="6" ry="8" /><path d="M34 36c0 9-12 14-14 14s-6-6-6-10c0-8 8-14 14-14s6 2 6 10z" /></g>
+                        </svg>
+                    </span>
+                    <b>Style Paws</b>
+                </a>
+
+                <nav aria-label="Main navigation">
+                    <a class="nav-btn" href="#products">Products</a>
+                    <a class="nav-btn" href="#about">About</a>
+                    <a class="nav-btn" href="#contact">Contact</a>
+                    <a class="nav-btn primary" href="#products">Shop</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="cart-btn" id="cartToggle" aria-expanded="false" aria-controls="cartPanel" title="Open cart">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z" /><circle cx="9" cy="20" r="1" /><circle cx="18" cy="20" r="1" /></svg>
+                        <span class="cart-count" id="cartCount" aria-hidden="true">0</span>
+                    </button>
+                    <button class="mobile-toggle" aria-controls="mobile-nav" aria-expanded="false">Menu</button>
+                </div>
+            </div>
+        </header>
+
+        <main id="top">
+            <section class="hero">
+                <div class="hero-card">
+                    <div class="hero-blob" aria-hidden="true"></div>
+                    <h1>Where Fashion Meets Function</h1>
+                    <p>Handcrafted collars, elegant leashes and durable ID tags — thoughtfully designed for style and safety.</p>
+                    <div class="cta">
+                        <a class="nav-btn primary" href="#products">See Products</a>
+                        <a class="nav-btn" href="#contact">Visit / Contact</a>
+                    </div>
+                    <div style="margin-top:14px"><span class="sub-pill">Free local pickup</span> <span style="margin-left:10px;color:var(--muted)">· 30-day returns · Ethically made</span></div>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hero">
+                        <defs><linearGradient id="hg" x1="0" x2="1"><stop offset="0" stop-color="#FFE6D0" /><stop offset="1" stop-color="#FFD9B3" /></linearGradient></defs>
+                        <rect width="600" height="400" rx="16" fill="#FFF" />
+                        <g transform="translate(80,40)"><rect x="0" y="0" width="260" height="320" rx="16" fill="url(#hg)" /><circle cx="160" cy="100" r="48" fill="#2F4674" opacity="0.06" /></g>
+                    </svg>
+                </div>
+            </section>
+
+            <h2 id="products">Products</h2>
+            <p style="color:var(--muted);margin-top:6px">Curated selection — made with love.</p>
+
+            <div class="grid" role="list" aria-live="polite">
+                <!-- Cards include data attributes used by JS for dynamic modal and cart -->
+                <article class="card reveal" role="listitem" data-name="Signature Collar" data-price="199" data-desc="Handcrafted vegan leather collar with custom engraving. Personalized with pet name & phone number.">
+                    <div class="card-inner" data-tilt>
+                        <div class="thumb" aria-hidden="true">
+                            <!-- inline visual -->
+                            <svg width="260" height="220" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="220" rx="12" fill="#FFF" /><path d="M30 140h200v18a12 12 0 0 1-12 12H42a12 12 0 0 1-12-12z" fill="#FDE2C8" /><rect x="46" y="92" rx="10" width="168" height="26" fill="#2F4674" /></svg>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="title">Signature Collar</h3>
+                            <p class="meta">Handcrafted vegan leather collar with custom engraving.</p>
+                            <ul class="features"><li>Personalized with pet name & phone</li><li>Adjustable fit, secure buckle</li><li>Lightweight & durable</li></ul>
+                            <div class="row">
+                                <div class="price">₱199</div>
+                                <div style="display:flex;gap:8px">
+                                    <button class="nav-btn" data-action="details">Details</button>
+                                    <button class="add" data-name="Signature Collar" data-price="199">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card reveal" role="listitem" data-name="The Everyday Leash" data-price="199" data-desc="Comfortable padded handle, 4 ft / 120 cm. Pairs perfectly with the Signature Collar.">
+                    <div class="card-inner" data-tilt>
+                        <div class="thumb" aria-hidden="true">
+                            <svg width="260" height="220" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="220" rx="12" fill="#FFF" /><path d="M30 80c60-24 140-24 200 0" stroke="#FFD1A3" stroke-width="14" stroke-linecap="round" fill="none" /><circle cx="210" cy="72" r="10" fill="#2F4674" /></svg>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="title">The Everyday Leash</h3>
+                            <p class="meta">Comfortable padded handle, 4 ft / 120 cm.</p>
+                            <ul class="features"><li>Padded handle</li><li>Durable and stylish</li><li>Perfect for city walks</li></ul>
+                            <div class="row">
+                                <div class="price">₱199</div>
+                                <div style="display:flex;gap:8px">
+                                    <button class="nav-btn" data-action="details">Details</button>
+                                    <button class="add" data-name="The Everyday Leash" data-price="199">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card reveal" role="listitem" data-name="The ID Tag" data-price="149" data-desc="Custom engraved, waterproof finishes. Engrave name + phone; scratch-resistant; lightweight.">
+                    <div class="card-inner" data-tilt>
+                        <div class="thumb" aria-hidden="true">
+                            <svg width="260" height="220" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="220" rx="12" fill="#FFF" /><rect x="92" y="48" width="76" height="76" rx="12" fill="#FFD9B3" /><text x="130" y="96" font-size="18" text-anchor="middle" fill="#2F4674" font-weight="700">ID</text></svg>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="title">The ID Tag</h3>
+                            <p class="meta">Custom engraved, waterproof finishes.</p>
+                            <ul class="features"><li>Engrave name + phone</li><li>Scratch-resistant</li><li>Lightweight</li></ul>
+                            <div class="row">
+                                <div class="price">₱149</div>
+                                <div style="display:flex;gap:8px">
+                                    <button class="nav-btn" data-action="details">Details</button>
+                                    <button class="add" data-name="The ID Tag" data-price="149">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <h2 id="about">About Us</h2>
+            <section class="panel about">
+                <p>Style Paws crafts stylish, functional pet accessories — combining quality materials with thoughtful design so your pet looks and feels great.</p>
+                <ul><li>Safety with style</li><li>Ethically sourced materials</li><li>Made with durability in mind</li></ul>
+            </section>
+
+            <h2 id="contact">Contact</h2>
+            <section class="panel contact">
+                <p>Email: <a href="mailto:StylePawsDesigns.com">StylePawsDesigns.com</a></p>
+                <p>Phone: <a href="tel:+639171234567">+63 917 123 4567</a></p>
+                <p>Find us: <a href="https://www.google.com/maps/search/coffee+shop+near+me" target="_blank" rel="noopener">Open Map</a></p>
+            </section>
+        </main>
+
+        <footer>© 2025 Style Paws · <a href="#top">Back to top</a></footer>
+    </div>
+
+    <!-- product modal -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-card" role="document">
+            <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- cart panel -->
+    <aside id="cartPanel" class="cart-panel" aria-hidden="true">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+            <h4>Cart</h4>
+            <div>
+                <button class="cart-close" id="cartClear" title="Clear cart">Clear</button>
+                <button class="cart-close" id="cartClose" title="Close">Close</button>
+            </div>
+        </div>
+        <div class="cart-items" id="cartItems" aria-live="polite"></div>
+        <div class="cart-footer">
+            <div class="cart-total" id="cartTotal">₱0</div>
+            <button class="nav-btn primary" id="checkoutBtn">Checkout</button>
+        </div>
+    </aside>
+
+    <script>
+        // Short helpers
+        const qs = s => document.querySelector(s);
+        const qsa = s => document.querySelectorAll(s);
+
+        // Reveal on scroll
+        (function () {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.12 });
+            qsa('.reveal').forEach(el => io.observe(el));
+        })();
+
+        // 3D tilt on cards (mouse)
+        (function () {
+            const cards = qsa('.card[data-tilt] .card-inner, .card[data-tilt] .thumb');
+            qsa('.card').forEach(card => {
+                const inner = card.querySelector('.card-inner');
+                card.addEventListener('mousemove', (ev) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (ev.clientX - rect.left) - rect.width / 2;
+                    const y = (ev.clientY - rect.top) - rect.height / 2;
+                    const rx = (-y / rect.height) * 8;
+                    const ry = (x / rect.width) * 10;
+                    inner.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+                });
+                card.addEventListener('mouseleave', () => inner.style.transform = 'none');
+            });
+        })();
+
+        // Modal details
+        const modal = qs('#modal');
+        const modalContent = qs('#modalContent');
+        const openModal = (title, price, desc) => {
+            modalContent.innerHTML = `<h3 style="margin-top:0;color:var(--brand)">${title}</h3>
+                                    <p style="margin:8px 0;color:var(--muted)">${desc}</p>
+                                    <div style="display:flex;gap:12px;align-items:center;margin-top:12px">
+                                      <div style="font-weight:900;color:var(--brand);">₱${price}</div>
+                                      <button class="nav-btn primary" id="modalAdd">Add to cart</button>
+                                    </div>`;
+            modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
+            qs('#modalClose').focus();
+            qs('#modalAdd') && qs('#modalAdd').addEventListener('click', () => { addItem(title, price); closeModal(); });
+        };
+        const closeModal = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); };
+
+        qs('#modalClose').addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+        // wire details buttons
+        qsa('[data-action="details"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const card = btn.closest('.card');
+                openModal(card.dataset.name, card.dataset.price, card.dataset.desc);
+            });
+        });
+
+        // Cart logic (simple in-memory)
+        let cart = [];
+        const cartCountEl = qs('#cartCount');
+        const cartItemsEl = qs('#cartItems');
+        const cartTotalEl = qs('#cartTotal');
+        const cartPanel = qs('#cartPanel');
+
+        function updateCartUI() {
+            cartCountEl.textContent = cart.reduce((s, i) => s + i.qty, 0);
+            cartItemsEl.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                total += item.qty * item.price;
+                const el = document.createElement('div');
+                el.className = 'cart-item';
+                el.innerHTML = `<div style="flex:1"><strong>${escapeHtml(item.name)}</strong><div style="font-size:12px;color:var(--muted)">Qty: ${item.qty}</div></div><div style="text-align:right">₱${item.price * item.qty}</div>`;
+                cartItemsEl.appendChild(el);
+            });
+            cartTotalEl.textContent = `₱${total}`;
+        }
+
+        function addItem(name, price) {
+            price = Number(price);
+            const existing = cart.find(i => i.name === name);
+            if (existing) { existing.qty += 1; }
+            else cart.push({ name, price, qty: 1 });
+            updateCartUI();
+            // show mini animation
+            qs('#cartToggle').animate([{ transform: 'scale(1.12)' }, { transform: 'scale(1)' }], { duration: 260 });
+            openCart();
+        }
+
+        // Add button handlers
+        qsa('.add').forEach(btn => {
+            btn.addEventListener('click', () => addItem(btn.dataset.name, btn.dataset.price));
+        });
+
+        // cart panel controls
+        const cartToggle = qs('#cartToggle');
+        const cartClose = qs('#cartClose');
+        const cartClear = qs('#cartClear');
+
+        function openCart() { cartPanel.classList.add('open'); cartPanel.setAttribute('aria-hidden', 'false'); cartToggle.setAttribute('aria-expanded', 'true'); }
+        function closeCart() { cartPanel.classList.remove('open'); cartPanel.setAttribute('aria-hidden', 'true'); cartToggle.setAttribute('aria-expanded', 'false'); }
+
+        cartToggle.addEventListener('click', () => cartPanel.classList.contains('open') ? closeCart() : openCart());
+        cartClose && cartClose.addEventListener('click', closeCart);
+        cartClear && cartClear.addEventListener('click', () => { cart = []; updateCartUI(); });
+
+        // checkout demo
+        qs('#checkoutBtn').addEventListener('click', () => {
+            if (cart.length === 0) { alert('Cart is empty'); return; }
+            alert('Demo checkout — total ' + cartTotalEl.textContent);
+        });
+
+        // accessible escape to close modal / cart
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') { closeModal(); closeCart(); }
+        });
+
+        // small utility
+        function escapeHtml(s) { return s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+
+        // Mobile nav toggle
+        const mobileToggle = qs('.mobile-toggle');
+        mobileToggle && mobileToggle.addEventListener('click', () => {
+            const nav = qs('nav');
+            const shown = getComputedStyle(nav).display === 'none';
+            nav.style.display = shown ? 'flex' : 'none';
+            nav.style.flexDirection = shown ? 'column' : '';
+            mobileToggle.setAttribute('aria-expanded', String(shown));
+        });
+
+        // progressive hint: if user prefers reduced motion, disable fancy transforms
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.setProperty('--transition', '0ms');
+        }
+    </script>
+</body>
+</html>
